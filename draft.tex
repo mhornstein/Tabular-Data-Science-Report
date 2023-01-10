@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \pagestyle{empty}
+\usepackage{enumerate}
 
 \begin{document}
 
@@ -55,5 +56,78 @@ we
 can
 
 have line breaks like \\[16pt] that
+
+Video 3: bullets:
+
+
+number list called enumarate list:
+
+\begin{enumerate}
+\item pencils
+\item pens
+\item notebook
+	\begin{enumerate}
+	\item notes
+	\item assessments
+		\begin{enumerate}
+		\item first item
+		\item second item
+		
+		\end{enumerate}
+	
+	\end{enumerate}
+\end{enumerate}
+
+Bullets: we use itemize:
+\begin{itemize}
+
+\item pencils
+\item pens
+\item notebook
+
+\end{itemize}
+
+some more options for enumrating:
+\begin{enumerate}[A.]
+\item first Item
+\item second Item
+
+\end{enumerate}
+
+And another one:
+\begin{enumerate}[i.]
+\item first Item
+\item second Item
+
+\end{enumerate}
+
+\pagebreak
+
+And another that starts from 6:
+
+\begin{enumerate} \setcounter{enumi}{5}
+\item first Item
+\item second Item
+\item third Item
+
+\end{enumerate}
+
+And another!
+\begin{enumerate}
+\item[] first Item
+\item[] second Item
+\item[] third Item
+
+\end{enumerate}
+
+And Last!
+\begin{enumerate}
+\item[ONE] first Item
+\item[TWO] second Item
+\item[THIRD] third Item
+
+\end{enumerate}
+
+
 
 \end{document}
