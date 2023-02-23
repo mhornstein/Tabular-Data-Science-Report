@@ -12,6 +12,7 @@
 \usepackage{xcolor}
 \usepackage[labelsep=quad,indention=10pt]{subfig}
 \usepackage[export]{adjustbox}
+\usepackage{multirow}
 
 \DeclareCaptionFont{gray}{\color{gray}}
 \usepackage[font={color=gray}]{caption}
@@ -84,9 +85,21 @@ In the first stage, I asked the students to write down as many observations as p
 
 I repeated this process with three well-known datasets: Iris (to classify iris species), Titanic (to classify survivors and fatalities in the Titanic disaster), and Wisconsin breast cancer data (to classify a cell sample as malignant or benign). 
 
-The results of the first two stages are presented in table 1.
+The results of the first two stages are presented in table 1.\\
 
+\centering
+\begin{tabular}{ |c|c|c|c|c| } 
+\hline
+\multicolumn{2}{|c|}{} & 3 & 4 & 5 \\
+\hline
+\multirow{2}{*}{Multiple row} & 7 & 8 & 9 & 10 \\\cline{2-5}
+& 11 &  12 & 13 & 14 \\
+\hline
+\multirow{2}{*}{Multiple row} & 7 & 8 & 9 & 10 \\\cline{2-5}
+& 11 &  12 & 13 & 14 \\
+\hline
 
+\end{tabular}
 
 
 
