@@ -16,6 +16,8 @@
 \usepackage{array}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \usepackage{float}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \DeclareCaptionFont{gray}{\color{gray}}
 \usepackage[font={color=gray}]{caption}
@@ -84,7 +86,7 @@ I evaluated the performance of the ICC plot by comparing it to Scatter and Jitte
 In the first stage, I asked the students to write down as many observations as possible from each graph. In the second stage, I asked them to determine the relevance of their observations to the classification problem at hand. Finally, I asked them to share the advantages and disadvantages they came across during this evaluation for each graph type. \\
 I repeated this process with three well-known datasets: Iris (to classify iris species), Titanic (to classify survivors and fatalities in the Titanic disaster), and Wisconsin breast cancer data\footnote{Only ten out of the thirty possible attributes in the Wisconsin breast cancer dataset were used in order to simplify the evaluation process.} (to classify a cell sample as malignant or benign). 
 
-The results of the first two stages are presented in table 1.\\
+The results of the first two stages are presented in table \ref{table:tab1}.\\
 
 \begin{table}[H]
 \centering
@@ -100,12 +102,29 @@ The results of the first two stages are presented in table 1.\\
 & Percentage of observations relevant to the classification process &  79.1\% & 79.1\% & 75.4\% \\
 \hline
 \end{tabular}
-\caption{\label{tab:somelabel} Quantity and percentage relevance of insights provided by respondents for the classification problem discussed.}
+\caption{Quantity and percentage relevance of insights provided by respondents for the classification problem discussed.}
+\label{table:tab1}
 \end{table}
 
 The results show that scatter and Jitter plots are easier to draw insights from. On average, the scatter plots enabled to generate twice as many insights about the data compared to the ICC plot. However, the percentage of relevant insights for classification is low: for the ICC plot, almost 4/5 of the insights were relevant to the classification process compared to only one third for the Scatter and Jitter plots.\\
 Based on the feedback from the subjects, it was revealed that the ICC graph was better suited for classification problems analysis but had two major drawbacks compared to the Scatter plot. Firstly, it was less intuitive and user-friendly and therefore required learning before using it. Secondly, the scatter plot made it easier to identify correlations, which was not possible in the ICC graph.
 
+\section{Trying to take it one step forwards - The MAGIC tool}\label{Trying to take it one step forwards - The MAGIC tool}
+
+As the ICC plot provides a convenient method to visualize data, it could potentially be utilized to analyze cases where a problem inherent in the data itself (rather than in the training process) results in misclassification of samples.\\
+To test this, I propose algorithm \ref{alg:alg1}:\\
+\begin{algorithm}
+\caption{An algorithm with caption}\label{alg:alg1}
+\begin{algorithmic}[1]
+	\State Build an ICC graph based on the training data.
+	\State Trace the path of the test data on the ICC graph:
+	\State Update the confusion matrices accordingly at each node.
+	\State Mark nodes no test-data has passed through at all with white (These represent parts of the space that were present in the training data but are missing in the test data).
+	\State Highlight nodes where samples of a different class than the one that appeared in the training set have reached with a double frame. 
+
+
+\end{algorithmic}
+\end{algorithm}
 
 
 
