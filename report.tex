@@ -14,6 +14,7 @@
 \usepackage[export]{adjustbox}
 \usepackage{multirow}
 \usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
 \DeclareCaptionFont{gray}{\color{gray}}
 \usepackage[font={color=gray}]{caption}
@@ -91,9 +92,10 @@ I repeated this process with three well-known datasets: Iris (to classify iris s
 The results of the first two stages are presented in table 1.\\
 
 \centering
-\begin{tabular}{ |m{2cm}|m{6cm}|m{1.9cm}|m{1.9cm}|m{1.9cm}| } 
+\begin{tabular}{ |m{2cm}|m{6cm}||P{1.9cm}|P{1.9cm}|P{1.9cm}| } 
 \hline
-\multicolumn{2}{|m{3cm}|}{} & Iris data & Titanic data & Wisconsin breast cancer data \\
+\multicolumn{2}{|m{3cm}||}{} & Iris data & Titanic data & Wisconsin breast cancer data \\
+\hline
 \hline
 \multirow{2}{*}{\parbox{4cm}{Scatter\textbackslash\\Jitter plot}} & Mean number of observations according to the graph & 4.25 & 2 & 8.5 \\\cline{2-5}
 & Percentage of observations relevant to the classification process &  27.9\% & 50\% & 23.6\% \\
