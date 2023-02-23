@@ -1,5 +1,5 @@
 
-\title{Using MAGIC for Misclassification Analysis}
+\title{Enhancing EDA and Misclassification Analysis through Tree Structure Visualization}
 \author{
         Maor Hornstein \\
         \small{Tabular Data Science (89547) - Final Project}\\
@@ -7,6 +7,9 @@
 \date{}
 
 \documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{refstyle}
 
 \begin{document}
 \maketitle
@@ -16,11 +19,23 @@ a short summary of the problem, your solution, and experimental results (up to 2
 \end{abstract}
 
 \section{Problem Description}\label{Problem Description}
-what element of the DS pipeline are you trying to
-improve? What are the problems it suffers from? 
+The focus of the solution is on the Exploratory Data Analysis (EDA) phase, particularly the use of scatter plots in this phase.
 
-\section{Solution overview}\label{Solution overview}
-Describe your solution in detail
+Scatter plots are a useful tool in data analysis and visualization due to their simplicity and ability to show the relationship between two or more groups. They are easy to comprehend and interpret, making them accessible for people with diverse backgrounds. Scatter plots help to uncover trends, patterns and outliers, examine the interactions between variables, and to highlight significant aspects of the data
+
+Despite their usefulness, scatter plots have some limitations. For instance, when data points are tightly packed or overlap (often referred to as overplotting), it can be challenging to accurately gauge the actual density of the data. Another significant challenge is distinguishing between groups when they overlap or when there is a small sample size. Lastly, Scatter plot only displays the distribution of the data in two dimensions and does not give insights into density or distribution in additional dimensions.
+
+\section{Solution overview - The ICC plot}\label{Solution overview}
+The proposed solution is a tree-based representation offered as an alternative to scatter plots to address their limitations.
+
+The tree structure mimics the process a researcher goes through when analyzing a scatter plot, visually dividing the plane into subplanes and examining the density and distribution of samples in each subplane. \figref{mylabel} bye.
+
+\begin{figure}[h]
+\includegraphics[width=0.8\textwidth]{scatter_plot_illustration.png}
+\caption{Illustrates how a researcher visually divides the Scatter plot if he or she uses only horizontal and vertical lines. The simulation is based on a subset of the Iris dataset containing only the Versicolor and Virginica classes and the Sepal width and Petal length attributes.}
+\label{fig:mylabel}
+\end{figure}
+
 
 \section{Experimental evaluation}\label{Experimental evaluation}
 Explain how you prove that your solution
