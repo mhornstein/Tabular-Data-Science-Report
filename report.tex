@@ -15,6 +15,7 @@
 \usepackage{multirow}
 \usepackage{array}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{float}
 
 \DeclareCaptionFont{gray}{\color{gray}}
 \usepackage[font={color=gray}]{caption}
@@ -29,10 +30,8 @@ a short summary of the problem, your solution, and experimental results (up to 2
 \end{abstract}
 
 \section{Problem Description}\label{Problem Description}
-The focus of the solution is on the Exploratory Data Analysis (EDA) phase, particularly the use of scatter plots in this phase.
-
-Scatter plots are a useful tool in data analysis and visualization due to their simplicity and ability to show the relationship between two or more groups. They are easy to comprehend and interpret, making them accessible for people with diverse backgrounds. Scatter plots help to uncover trends, patterns and outliers, examine the interactions between variables, and to highlight significant aspects of the data
-
+The focus of the solution is on the Exploratory Data Analysis (EDA) phase, particularly the use of scatter plots in this phase. \\
+Scatter plots are a useful tool in data analysis and visualization due to their simplicity and ability to show the relationship between two or more groups. They are easy to comprehend and interpret, making them accessible for people with diverse backgrounds. Scatter plots help to uncover trends, patterns and outliers, examine the interactions between variables, and to highlight significant aspects of the data. \\
 Despite their usefulness, scatter plots have some limitations. For instance, when data points are tightly packed or overlap (often referred to as overplotting), it can be challenging to accurately gauge the actual density of the data. Another significant challenge is distinguishing between groups when they overlap or when there is a small sample size. Lastly, Scatter plot only displays the distribution of the data in two dimensions and does not give insights into density or distribution in additional dimensions.
 
 \section{Solution overview - The ICC plot}\label{Solution overview}
@@ -40,7 +39,7 @@ The proposed solution is a tree-based representation offered as an alternative t
 
 The tree structure mimics the process a researcher goes through when analyzing a scatter plot, visually dividing the plane into subplanes and examining the density and distribution of samples in each subplane, as illustrated in \figref{fig1}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.8\textwidth]{scatter_plot_illustration.png}
 
@@ -49,13 +48,11 @@ The tree structure mimics the process a researcher goes through when analyzing a
 
 \end{figure}
 
-The selection of a tree structure representation was inspired by the widespread use of trees in daily decision making. Also, unlike the scatter plots that only feature points, a tree enables additional information to be displayed at its vertices and arcs. Last, the branching structure of the tree facilitates the analysis of multiple dimensions of the data.
-
-Visual features such as colors and gradients aid in emphasizing the data's distribution, while confusion matrices at the tree nodes depict precisely the data's density.
-
+The selection of a tree structure representation was inspired by the widespread use of trees in daily decision making. Also, unlike the scatter plots that only feature points, a tree enables additional information to be displayed at its vertices and arcs. Last, the branching structure of the tree facilitates the analysis of multiple dimensions of the data. \\
+Visual features such as colors and gradients aid in emphasizing the data's distribution, while confusion matrices at the tree nodes depict precisely the data's density. \\
 I named the representation ICC plot, as an acronym of its 3 components: \textbf{I}nduction tree, \textbf{C}onfusion matrices and \textbf{C}olors.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{icc.png}
 
@@ -66,7 +63,7 @@ I named the representation ICC plot, as an acronym of its 3 components: \textbf{
 
 The ICC offers additional functionality to the researcher, such as adjusting the tree depth to increase or decrease the number of simulated splits of the plain, hiding the confusion matrices to focus on the data spread instead of specific quantities, and adjusting colors, as illustrated in  \figref{fig3}.
 
-\begin{figure}[h]
+\begin{figure}[H]
         	\centering
            \subfloat{%
               \includegraphics[height=3.5cm, valign=t]{ICC-v1.png}%
@@ -83,16 +80,15 @@ The ICC offers additional functionality to the researcher, such as adjusting the
 
 
 \section{Experimental evaluation}\label{Experimental evaluation}
-I evaluated the performance of the ICC plot by comparing it to Scatter and Jitter plots, as a baseline. To do this, I presented four CS students majoring in Data Science two graphs representing different datasets: one Scatter or Jitter plot, and the other - ICC plot.
-
-In the first stage, I asked the students to write down as many observations as possible from each graph. In the second stage, I asked them to determine the relevance of their observations to the classification problem at hand. Finally, I asked them to share the advantages and disadvantages they came across during this evaluation for each graph type.
-
+I evaluated the performance of the ICC plot by comparing it to Scatter and Jitter plots, as a baseline. To do this, I presented four CS students majoring in Data Science two graphs representing different datasets: one Scatter or Jitter plot, and the other - ICC plot. \\
+In the first stage, I asked the students to write down as many observations as possible from each graph. In the second stage, I asked them to determine the relevance of their observations to the classification problem at hand. Finally, I asked them to share the advantages and disadvantages they came across during this evaluation for each graph type. \\
 I repeated this process with three well-known datasets: Iris (to classify iris species), Titanic (to classify survivors and fatalities in the Titanic disaster), and Wisconsin breast cancer data (to classify a cell sample as malignant or benign). 
 
 The results of the first two stages are presented in table 1.\\
 
+\begin{table}[H]
 \centering
-\begin{tabular}{ |m{2cm}|m{6cm}||P{1.9cm}|P{1.9cm}|P{1.9cm}| } 
+\begin{tabular}{ |m{2cm}|m{4cm}||P{1.7cm}|P{1.7cm}|P{1.7cm}| } 
 \hline
 \multicolumn{2}{|m{3cm}||}{} & Iris data & Titanic data & Wisconsin breast cancer data \\
 \hline
@@ -103,8 +99,12 @@ The results of the first two stages are presented in table 1.\\
 \multirow{2}{*}{ICC} & Percentage of observations relevant to the classification process & 2 & 2 & 3.5 \\\cline{2-5}
 & Percentage of observations relevant to the classification process &  79.1\% & 79.1\% & 75.4\% \\
 \hline
-
 \end{tabular}
+\caption{\label{tab:somelabel} Quantity and percentage relevance of insights provided by respondents for the classification problem discussed.}
+\end{table}
+
+The results show that scatter and Jitter plots are easier to draw insights from. On average, the scatter plots enabled to generate twice as many insights about the data compared to the ICC plot. However, the percentage of relevant insights for classification is low: for the ICC plot, almost 4/5 of the insights were relevant to the classification process compared to only one third for the Scatter and Jitter plots.\\
+Based on the feedback from the subjects, it was revealed that the ICC graph was better suited for classification problems analysis but had two major drawbacks compared to the Scatter plot. Firstly, it was less intuitive and user-friendly and therefore required learning before using it. Secondly, the scatter plot made it easier to identify correlations, which was not possible in the ICC graph.
 
 
 
