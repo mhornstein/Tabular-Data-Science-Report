@@ -19,6 +19,15 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
+\newcounter{algsubstate}
+\renewcommand{\thealgsubstate}{2.\arabic{algsubstate}}
+\newenvironment{algsubstates}
+  {\setcounter{algsubstate}{0}%
+   \renewcommand{\State}{%
+     \stepcounter{algsubstate}%
+     \Statex {\footnotesize\thealgsubstate:}\space}}
+  {}
+
 \DeclareCaptionFont{gray}{\color{gray}}
 \usepackage[font={color=gray}]{caption}
 
@@ -114,18 +123,44 @@ Based on the feedback from the subjects, it was revealed that the ICC graph was 
 As the ICC plot provides a convenient method to visualize data, it could potentially be utilized to analyze cases where a problem inherent in the data itself (rather than in the training process) results in misclassification of samples.\\
 To test this, I propose algorithm \ref{alg:alg1}:\\
 \begin{algorithm}
-\caption{An algorithm with caption}\label{alg:alg1}
+\caption{MAGIC algorithm}\label{alg:alg1}
 \begin{algorithmic}[1]
 	\State Build an ICC graph based on the training data.
 	\State Trace the path of the test data on the ICC graph:
+	\begin{algsubstates}
 	\State Update the confusion matrices accordingly at each node.
+	
 	\State Mark nodes no test-data has passed through at all with white (These represent parts of the space that were present in the training data but are missing in the test data).
 	\State Highlight nodes where samples of a different class than the one that appeared in the training set have reached with a double frame. 
-
-
+\end{algsubstates}
 \end{algorithmic}
 \end{algorithm}
 
+I developed an API that implements the algorithm mentioned above. The API not only generates the resulting tree but also enables extracting predicates representing a given test-sample according to it. I named the API the MAGIC (Misclassification Analysis by Graphic Induction-Tree Classifier) tool.\\
+A sample of the MAGIC algorithm output is presented in \figref{fig:fig3}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{iris-magic.png}
+
+\caption{Examining test-data on a tree generated from the Iris dataset: The white vertices represent samples that are not present in the test data, for example, irises with a petal length of 2.45 or less. The double-framed vertices reveal that one sample in the test data was misclassified as a type 2 iris when it is actually a type 1. However, this error is understandable as 13 type 2 samples were correctly classified for similar reasons.}
+\label{fig:fig3}
+
+\end{figure}
+
+\subsection{MAGIC Evaluation Process}\label{MAGIC Evaluation Process}
+I conducted the evaluation process of the MAGIC tool in two stages.
+The first stage involved a qualitative comparison of the MAGIC tool's performance with the Scatter plot on the three datasets used in the ICC evaluation. This comparison revealed that the MAGIC tool is particularly effective in identifying misclassification in two scenarios: (1) samples from different classes with overlapping characteristics and (2) samples from different classes with identical characteristics. Additionally, the tool proved useful in detecting Hidden Stratification, which I tested on a synthetically created dataset.\\
+In the second stage of the evaluation, I used a rather humorous questionnaire for a quantitative measurement. Three out of the four subjects participated in the questionnaire, where they were presented with the data distribution of each of the four datasets using both tools, the MAGIC tool and the Scatter plot. The aim of the questionnaire was to determine the cases where they were able to successfully identify the reason for misclassification.
+
+\subsection{MAGIC Evaluation Results}\label{MAGIC Evaluation Results}
+From the qualitative research, it was found that the scatter plot graph is more effective in characterizing global phenomena, such as overlap in the characteristics of samples belonging to different classes, while the MAGIC tool is more useful for analyzing local cases, such as samples with identical or almost identical characteristics belonging to different classes, as mentioned above. Furthermore, the MAGIC tool was significantly useful for datasets where most of the characteristics were categorical because the Scatter Plot suffered from overplotting. The MAGIC tool was also found to be more useful in cases where misclassification was due to Hidden Stratification. The questionnaire results are presented on table \ref{table:tab2}.\\
+
+
+TABLEEEEEEEEEEEE
+
+The subjects reported that the MAGIC tool was reasonably useful for the presented tasks, yet its main disadvantage is its visual complexity (due to the additional visual elements), which requires a significant learning curve. \\
+As the MAGIC tool's strengths were found mainly in cases of local misclassification, it is better, then, to use more user-friendly tools, like LIME.
 
 
 \section{Related work}\label{Related work}
