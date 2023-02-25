@@ -182,16 +182,18 @@ As the MAGIC tool's strengths were found mainly in cases of local misclassificat
 
 
 \section{Related work}\label{Related work}
-include a short discussion on relevant existing tools and
-techniques. *Cite the works as well as discuss them*. Did they try to
-solve the same problem? In what manner your solution different? Did
-you use/ got inspiration from it? 
+\subsection{Scatter plots limitation}\label{Scatter plots limitation}
+Although having quite a few limitations, Scatter plots have been widely used in the field of statistics and data analysis. Over time, researchers have proposed different improvements to overcome these limitations. I will briefly review a selection of works and solutions.\\
+Scatter plots can get cluttered with large datasets and overlapping points, preventing the researcher from correctly assessing the density of the data. This is especially crucial when comparing between different groups. The oldest and most famous improvement for that is the Jittered Scatter plot, that randomly adjusts point positions to show data distribution better. Woodruff et al. \cite{woodruff1998constant} proposed a system named VIDA that plots dots for objects in dense regions and polygonal outlines for objects in sparser regions. Dang et al. \cite{dang2010stacking} suggested addressing the above by arranging points in a third dimension.\\
+Another problem that the Overdraw poses is the difficulty of separating overlapping groups in the data. H. Chen et al. \cite{lee2012ieee} offer to use hierarchical multi-class sampling method to create a simplified, feature-preserving scatter plot visualization. Mayorga and Gleicher \cite{mayorga2013splatterplots} propose to group dense data points and reveal subgroup relations through the use of smooth contour lines.\\
+Oftentimes, two or three variables may not provide enough information to fully understand the relationships in the data. As plotting in four or more dimensions is impossible, Scatterplot Matrix (SPLOM) is commonly used. While solving the above, it imposes new challenges as it doesn’t scale with the features quantity \cite{carr1987scatterplot} \cite{lehmann2012selecting}.\\
+Additional improvements might include employing Scagnostics methods \cite{sharma2012determining}, Spatial distortion \cite{keim1998gridfit} and focusing on local patterns \cite{shao2016guiding}.
 
 \section{Conclusion}\label{Conclusion}
 summarize your finding, and the things you learned from
 the project
 
 \bibliographystyle{abbrv}
-\bibliography{main}
+\bibliography{scatter_plot_limitation_bib}
 
 \end{document}
