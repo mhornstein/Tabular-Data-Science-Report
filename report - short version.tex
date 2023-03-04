@@ -148,18 +148,14 @@ The results show that Scatter and Jitter Plots are easier to draw insights from.
 The feedback from the subjects indicated that the ICC plot was better suited for analyzing classification problems than Scatter plots, but it had two major drawbacks. Firstly, it was less intuitive and user-friendly, requiring a learning curve before use. Secondly, it did not enable the identification of correlations, which is possible in Scatter plots.
 
 \subsection{MAGIC Evaluation Process}\label{MAGIC Evaluation Process}
-I conducted the evaluation process of the MAGIC tool in two stages.\\
-The first stage involved a qualitative comparison of the MAGIC tool's performance with the Scatter Plot on the three datasets used in the ICC evaluation, as well as on a forth synthetic dataset demonstrating Hidden Stratification.\\
-In the second stage of the evaluation, I used a rather humorous questionnaire for a quantitative measurement. Three out of the four subjects participated and were presented with the data distribution of each of the four datasets using both the MAGIC tool and the Scatter plot. The questionnaire was used to determine the cases where they were able to successfully identify the reason for misclassification.
+The evaluation of the MAGIC tool was conducted in two stages. The first stage involved a qualitative comparison of the MAGIC tool's performance with the Scatter Plot on the three datasets, as well as on a forth additional synthetic dataset demonstrating Hidden Stratification. The second stage of the evaluation was quantitative: the subjects were presented with the data distribution of the four datasets using both the MAGIC tool and scatter plot. A humorous questionnaire was used to ask them to identify the reason for misclassification based on each of the visualization options.
 
-\subsection{MAGIC Evaluation Results}\label{MAGIC Evaluation Results}
-From the qualitative research, it was found that the scatter plot graph is more effective in characterizing global phenomena, such as overlap in the characteristics of samples belonging to different classes, while the MAGIC tool is more useful for analyzing local cases, such as samples with identical or almost identical characteristics belonging to different classes. Furthermore, the MAGIC tool was significantly useful for datasets where most of the characteristics were categorical because the Scatter Plot suffered from overplotting. The MAGIC tool was also found to be more useful in cases where misclassification was due to Hidden Stratification. The questionnaire results are presented on table \ref{table:tab2}.\\
+From the qualitative research, it was found that the scatter plot graph is more effective in characterizing global phenomena, such as overlap in the characteristics of samples belonging to different classes, while the MAGIC tool is more useful for analyzing local cases, such as samples with identical or almost identical characteristics belonging to different classes. The MAGIC tool was significantly useful for datasets where most of the characteristics were categorical because the Scatter Plot suffered from overplotting. The MAGIC tool was also found to be more useful in cases where misclassification was due to Hidden Stratification. The questionnaire results are presented on table \ref{table:tab2}. The subjects reported that the MAGIC tool was reasonably useful for the presented tasks, yet its main disadvantage is its visual complexity, which requires a significant learning curve.
 
 
-
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{ |m{4cm}||m{4.5cm}|m{4.5cm}| } 
+\begin{tabular}{ |m{5cm}||m{5cm}|m{5.5cm}| } 
 \hline
 Reason for misclassificaion & Number of subjects who correctly identified the phenomenon using a Scatter plot & Number of subjects who correctly identified the phenomenon using the MAGIC tool \\
 \hline
@@ -175,8 +171,6 @@ Hidden Stratification & 1/3 & 2/3 \\
 \label{table:tab2}
 \end{table}
 
-The subjects reported that the MAGIC tool was reasonably useful for the presented tasks, yet its main disadvantage is its visual complexity, which requires a significant learning curve.
-
 \section{Related work}\label{Related work}
 \subsection{Scatter plots limitation}\label{Scatter plots limitation}
 Although having quite a few limitations, Scatter plots have been widely used in the field of statistics and data analysis. Over time, researchers have proposed different improvements to overcome these limitations. I will briefly review a selection of works and solutions.\\
@@ -188,14 +182,13 @@ Additional improvements might include employing Scagnostics methods[\citenum{sha
 \subsection{Visualizing human decision making processes by trees
 }\label{Visualizing human decision making processes by trees}
 
-Trees are broadly used across different disciplines to analyze complex decision making processes. For example, the Ethno-graphic decision tree modeling[\citenum{gladwin1989ethnographic}] is a research method designed to identify the factors that groups of people use in their decision making. In game theory, the decision-making process is formalized and visualized using a tree, known as a \textit{game tree}[\citenum{gibbons1997introduction}].\\
-Trees are available to professionals, such as psychological counselors, to aid in the counseling process[\citenum{beck2005ethnographic}] and for service providers to assess service provision[\citenum{harrison2018selecting}]. In political science, decision trees serve as a tool to analyze election results[\citenum{armengol2020decision}][\citenum{joynersimulating}].
+Trees are broadly used across different disciplines to analyze complex decision making processes. For example, the Ethno-graphic decision tree modeling[\citenum{gladwin1989ethnographic}] is a research method designed to identify the factors that groups of people use in their decision making. In game theory, the decision-making process is formalized and visualized using a tree, known as a \textit{game tree}[\citenum{gibbons1997introduction}]. Trees are available to professionals, such as psychological counselors, to aid in the counseling process[\citenum{beck2005ethnographic}] and for service providers to assess service provision[\citenum{harrison2018selecting}]. In political science, decision trees serve as a tool to analyze election results[\citenum{armengol2020decision}][\citenum{joynersimulating}].
 
 \subsection{Misclassification Analysis}\label{Misclassification Analysis
 }
 Misclassification analysis is a crucial step in the Data Science pipeline, and as such, development environments designed for data scientists provide a variety of dedicated tools for it. For instance, Gestalt-20[\citenum{patel2010gestalt}] enables researchers to compare different samples side by side, making it possible to visually analyze differences between images in entity extraction tasks, or between texts in sentiment analysis tasks. ModelTracker[\citenum{amershi2015modeltracker}] is another tool that enables local examination of classification errors.\\
 An example of a system in the text domain is EluciDebug[\citenum{kulesza2015principles}], which reports to the user why it classified a certain email in the way it did.\\
-Finally, it is important to mention the well-known LIME algorithm[\citenum{ribeiro2016should}], which suggests using simpler and more interpretable models to examine the nearby and local environment of the misclassified sample.
+Finally, it is important to mention the well-known LIME algorithm[\citenum{ribeiro2016should}], which suggests using simpler and interpretable models to examine the local environment of a misclassified sample.
 
 \section{Conclusion}\label{Conclusion}
 In this project I proposed a novel approach to data visualization using tree-structures. This approach was found to be particularly beneficial in the exploratory data analysis (EDA) process, overcoming the limitations of scatter plots. Although its usefulness in Misclassification Analysis was limited, it proved to be useful in specific cases, such as identifying Hidden Stratification.\\
