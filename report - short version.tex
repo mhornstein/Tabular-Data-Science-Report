@@ -73,9 +73,9 @@ Visual features such as colors and gradients aid in emphasizing the data's distr
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{icc.png}
+\includegraphics[width=0.6\textwidth]{icc.png}
 
-\caption{ICC with 3 nodes simulate a plain with 3 splits. The data in this figure is the same as in \figref{fig1}.}
+\caption{ICC with 3 nodes simulate a plain with 3 splits. The data is the same as in \figref{fig1}.}
 \label{fig:fig2}
 
 \end{figure}
@@ -85,13 +85,13 @@ The ICC plot provides researchers with additional functionality, such as the abi
 \begin{figure}[H]
         	\centering
            \subfloat{%
-              \includegraphics[height=3.5cm, valign=t]{ICC-v1.png}%
+              \includegraphics[height=4cm, valign=t]{ICC-v1.png}%
            } 
            \subfloat{%
-              \includegraphics[height=2cm, valign=t]{ICC-v2.png}%
+              \includegraphics[height=3cm, valign=t]{ICC-v2.png}%
            }
            \subfloat{%
-              \includegraphics[height=2cm, valign=t]{ICC-v3.png}%
+              \includegraphics[height=3cm, valign=t]{ICC-v3.png}%
            }
            \caption{Different variations of ICC.}
            \label{fig:fig3}
@@ -115,7 +115,7 @@ As the ICC plot provides a convenient method to visualize data, it could potenti
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{iris-magic.png}
+\includegraphics[width=0.55\textwidth]{iris-magic.png}
 
 \caption{Examining test-data of the Iris dataset: The white vertices represent samples that are not present in the test data (for example, irises with a petal length of 2.45 or less). The double-framed vertices reveal that one sample in the test data was misclassified as type 2 when it is actually type 1. This error is understandable as 13 type 2 samples were correctly classified for similar reasons.}
 \label{fig:fig3}
@@ -173,10 +173,10 @@ Hidden Stratification & 1/3 & 2/3 \\
 
 \section{Related work}\label{Related work}
 \subsection{Scatter plots limitation}\label{Scatter plots limitation}
-Although having quite a few limitations, Scatter plots have been widely used in the field of statistics and data analysis. Over time, researchers have proposed different improvements to overcome these limitations. I will briefly review a selection of works and solutions.\\
-Scatter plots can get cluttered with large datasets and overlapping points, preventing the researcher from correctly assessing the density of the data. This is especially crucial when comparing between different groups. The oldest and most famous improvement for that is the Jitter Scatter plot, that randomly adjusts point positions to show data distribution better. \cite{woodruff1998constant} proposed a system named VIDA that plots dots for objects in dense regions and polygonal outlines for objects in sparser regions. \cite{dang2010stacking} suggested addressing the above by arranging points in a third dimension.\\
-Another problem that the Overplotting poses is the difficulty of separating overlapping groups in the data. \cite{lee2012ieee} offer to use hierarchical multi-class sampling method to create a simplified, feature-preserving scatter plot visualization. \cite{mayorga2013splatterplots} propose to group dense data points and reveal subgroup relations through the use of smooth contour lines.\\
-Oftentimes, two or three variables may not provide enough information to fully understand the relationships in the data. As plotting in four or more dimensions is impossible, Scatterplot Matrix (SPLOM) is commonly used. While solving the above, it imposes new challenges as it doesn’t scale with the features quantity[\citenum{carr1987scatterplot}][\citenum{lehmann2012selecting}].\\
+Although having quite a few limitations, Scatter plots are widely used. Researchers proposed different improvements to overcome these limitations. I will briefly review a selection of works and solutions.\\
+Scatter plots can get cluttered with large datasets and overlapping points, preventing the researcher from correctly assessing the density of the data. This is especially crucial when comparing between different groups. The most famous improvement for that is the Jitter plot, that randomly adjusts point positions to show data distribution better. \cite{woodruff1998constant} proposed the VIDA system that plots dots for objects in dense regions and polygonal outlines for objects in sparser regions. \cite{dang2010stacking} suggested addressing the above by arranging points in a third dimension.\\
+Another problem is the difficulty of separating overlapping groups in the data. \cite{lee2012ieee} offer to use hierarchical multi-class sampling method to create a simplified, feature-preserving scatter plot visualization. \cite{mayorga2013splatterplots} propose to group dense data points and reveal subgroup relations through the use of contour lines.\\
+As plotting in four or more dimensions is impossible, Scatterplot Matrix (SPLOM) is commonly used, yet it imposes new challenges as it doesn’t scale with the features quantity[\citenum{carr1987scatterplot}][\citenum{lehmann2012selecting}].\\
 Additional improvements might include employing Scagnostics methods[\citenum{sharma2012determining}], Spatial distortion[\citenum{keim1998gridfit}] and focusing on local patterns[\citenum{shao2016guiding}].
 
 \subsection{Visualizing human decision making processes by trees
@@ -191,10 +191,9 @@ An example of a system in the text domain is EluciDebug[\citenum{kulesza2015prin
 Finally, it is important to mention the well-known LIME algorithm[\citenum{ribeiro2016should}], which suggests using simpler and interpretable models to examine the local environment of a misclassified sample.
 
 \section{Conclusion}\label{Conclusion}
-In this project I proposed a novel approach to data visualization using tree-structures. This approach was found to be particularly beneficial in the exploratory data analysis (EDA) process, overcoming the limitations of scatter plots. Although its usefulness in Misclassification Analysis was limited, it proved to be useful in specific cases, such as identifying Hidden Stratification.\\
-Throughout this project, I first and foremost learned about the research process and its essential steps. One of the most important takeaways was the significance of thoroughly defining the research question before initiating the coding and investigation process.\\
-In particular, I came across the LIME algorithm at an advanced stage in the work on the project, before it was discussed in class. I was somewhat disheartened to discover that there was a tool that provides some of the functionality of the tools I offer (mostly the MAGIC tool) in a simpler and more convenient manner. This also reinforced the feedback from the subjects, which taught me that the ease of use and user-friendliness of the tool is a crucial factor. On the other hand, I appreciate the elegance of the LIME algorithm. It was also reassuring to see that it relies on simpler and more interpretable models, similar to the tree structure I chose for my own work. In addition, it was encouraging to see that the tools I suggested, could help in discovering cases like Hidden Stratification more effectively. In any case, if I had to name one work that inspired me, it would be the LIME algorithm. Its elegant, mathematically-supported, and user-friendly approach aligns perfectly with the main goal of visualization tools - to provide clear, precise and easy-to-use solutions.\\
-Overall, exploring diverse data visualization tools and approaches was a fascinating experience. It provided me with a profound comprehension of the objectives and procedures that researchers undergo when encountering various visualizations. The knowledge and insights gained are valuable to me as a researcher in general and as a data scientist in particular.
+In this project I proposed a novel approach to data visualization using tree-structures, which was effective in exploratory data analysis (EDA) and overcame the limitations of scatter plots. While it had limited usefulness in Misclassification Analysis, it was found to be beneficial in specific cases such as identifying Hidden Stratification.\\
+Throughout this project, I first and foremost learned about the research process and its essential steps. One important takeaways is the significance of thoroughly defining the research question before the coding and investigation process. In particular, I came across the LIME algorithm at an advanced stage of the project, before it was discussed in class. I was somewhat disheartened to discover a tool that provides some of the functionality of the tools I offer (mostly the MAGIC tool) in a simpler and more convenient manner. This also reinforced the feedback from the subjects, which taught me that the user-friendliness of a tool is a crucial factor. On the other hand, I appreciate the elegance of the LIME algorithm. It was also reassuring to see that it relies on simpler and more interpretable models, similar to the tree structure I chose for my own work. Last, it was encouraging to see that the tools I suggested could help in discovering cases like Hidden Stratification more effectively then LIME. In any case, if I had to name one work that inspired me, it would be the LIME algorithm as it is elegant, mathematically-supported, and user-friendly.\\
+Overall, exploring different data visualization tools and approaches was a fascinating experience. It provided me with a profound comprehension of the objectives and procedures that researchers undergo when encountering various visualizations. The knowledge and insights gained are valuable to me as a researcher in general and as a data scientist in particular.
 
 
 \setcitestyle{numbers}
