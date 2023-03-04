@@ -97,14 +97,36 @@ The ICC plot provides researchers with additional functionality, such as the abi
            \label{fig:fig3}
 \end{figure}    
 
+\subsection{The MAGIC tool}
+As the ICC plot provides a convenient method to visualize data, it could potentially be utilized to analyze cases where a problem inherent in the data itself (rather than in the training process) results in misclassification. To test this, I propose algorithm \ref{alg:alg1} and provide an API that implements it\footnote{The API not only generates the resulting tree but also enables extracting predicates representing a given test-sample according to it.}. I named the API the MAGIC (Misclassification Analysis by Graphic Induction-Tree Classifier) tool. A sample of the MAGIC algorithm output is presented in \figref{fig3}.
+\begin{algorithm}
+\caption{MAGIC algorithm}\label{alg:alg1}
+\begin{algorithmic}[1]
+	\State Build an ICC graph based on the training data.
+	\State Trace the path of the test data on the ICC graph:
+	\begin{algsubstates}
+	\State Update the confusion matrices accordingly at each node.
+	
+	\State Mark nodes no test-data has passed through at all with white (These represent parts of the space that were present in the training data but are missing in the test data).
+	\State Highlight nodes where samples of a different class than the one that appeared in the training set have reached with a double frame. 
+\end{algsubstates}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{iris-magic.png}
+
+\caption{Examining test-data of the Iris dataset: The white vertices represent samples that are not present in the test data (for example, irises with a petal length of 2.45 or less). The double-framed vertices reveal that one sample in the test data was misclassified as type 2 when it is actually type 1. This error is understandable as 13 type 2 samples were correctly classified for similar reasons.}
+\label{fig:fig3}
+
+\end{figure}
 
 \section{Experimental evaluation}\label{Experimental evaluation}
-I evaluated the performance of the ICC plot by comparing it to Scatter and Jitter plots, as a baseline. To do this, I presented four CS students majoring in Data Science two graphs representing a given dataset: one Scatter (or Jitter) plot, and the other - ICC plot. \\
-In the first stage, I asked the students to write down as many observations as possible from each graph. In the second stage, I asked them to determine the relevance of their observations to the classification problem the dataset is used for. Finally, I asked them to share the advantages and disadvantages they came across during this evaluation.\\
-I repeated this process with three well-known datasets: Iris (to classify iris species), Titanic (to classify survivors and fatalities in the Titanic disaster), and Wisconsin breast cancer data\footnote{Only ten out of the thirty possible attributes in the Wisconsin breast cancer dataset were used in order to simplify the evaluation process.} (to classify a cell sample as malignant or benign).\\
-The results are in table \ref{table:tab1}.
+\subsection{The ICC plot}
+I evaluated the performance of the ICC plot by comparing it to Scatter and Jitter plots, as a baseline. To do this, I presented four CS students majoring in Data Science two graphs representing a given dataset: one Scatter (or Jitter) plot, and the other - ICC plot. In the first stage, I asked the students to write down as many observations as possible from each graph. In the second stage, I asked them to determine the relevance of their observations to the classification problem the dataset is used for. Finally, I asked them to share the advantages and disadvantages they came across during this evaluation. I repeated this process with three well-known datasets: Iris, Titanic, and Wisconsin breast cancer data\footnote{Only ten out of the thirty possible attributes in the Wisconsin breast cancer dataset were used in order to simplify the evaluation process.}. The results are in table \ref{table:tab1}.
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
 \begin{tabular}{ |m{2cm}|m{4cm}||P{1.7cm}|P{1.7cm}|P{1.7cm}| } 
 \hline
@@ -124,35 +146,6 @@ The results are in table \ref{table:tab1}.
 
 The results show that Scatter and Jitter Plots are easier to draw insights from. On average, the scatter plots enabled to generate twice as many insights about the data compared to the ICC plot. However, the percentage of relevant insights for classification is low: for the ICC plot, almost 4/5 of the insights were relevant to the classification process compared to only one third for the Scatter and Jitter plots.\\
 Based on the feedback from the subjects, it was revealed that the ICC graph was better suited for classification problems analysis but had two major drawbacks compared to the Scatter plot: firstly, it was less intuitive and user-friendly and therefore required learning before using it. Secondly, the scatter plot made it easier to identify correlations, which was not possible in the ICC graph.
-
-\section{Taking it one step forwards - The MAGIC tool}\label{Taking it one step forwards - The MAGIC tool}
-
-As the ICC plot provides a convenient method to visualize data, it could potentially be utilized to analyze cases where a problem inherent in the data itself (rather than in the training process) results in misclassification. To test this, I propose algorithm \ref{alg:alg1} and provide an API that implements it\footnote{The API not only generates the resulting tree but also enables extracting predicates representing a given test-sample according to it.}.
-\begin{algorithm}
-\caption{MAGIC algorithm}\label{alg:alg1}
-\begin{algorithmic}[1]
-	\State Build an ICC graph based on the training data.
-	\State Trace the path of the test data on the ICC graph:
-	\begin{algsubstates}
-	\State Update the confusion matrices accordingly at each node.
-	
-	\State Mark nodes no test-data has passed through at all with white (These represent parts of the space that were present in the training data but are missing in the test data).
-	\State Highlight nodes where samples of a different class than the one that appeared in the training set have reached with a double frame. 
-\end{algsubstates}
-\end{algorithmic}
-\end{algorithm}
-
-I named the API the MAGIC (Misclassification Analysis by Graphic Induction-Tree Classifier) tool.\\
-A sample of the MAGIC algorithm output is presented in \figref{fig3}.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{iris-magic.png}
-
-\caption{Examining test-data of the Iris dataset: The white vertices represent samples that are not present in the test data (for example, irises with a petal length of 2.45 or less). The double-framed vertices reveal that one sample in the test data was misclassified as type 2 when it is actually type 1. This error is understandable as 13 type 2 samples were correctly classified for similar reasons.}
-\label{fig:fig3}
-
-\end{figure}
 
 \subsection{MAGIC Evaluation Process}\label{MAGIC Evaluation Process}
 I conducted the evaluation process of the MAGIC tool in two stages.\\
