@@ -55,10 +55,9 @@ The objective of this project is to explore how tree-based visualization can ove
 \section{Problem Description}\label{Problem Description}
 Scatter Plots are a popular tool for data analysis and visualization due to their accessibility and ease of interpretation. However, they also have limitations. Overplotting, which occurs when data points are tightly packed or overlap, can make it difficult to assess the true density of the data. Another challenge is distinguishing between groups when they overlap or when the sample size is small. Additionally, Scatter Plots only display data distribution in two dimensions, which limits their ability to provide insights into density or distribution in for or more dimensions.
 
-\section{Solution overview - The ICC plot}\label{Solution overview}
-The proposed solution is a tree-based representation offered as an alternative to Scatter Plots to address their limitations.
-
-The tree structure mimics the process a researcher goes through when analyzing a scatter plot, visually dividing the plane into subplanes and examining the density and distribution of samples in each subplane, as illustrated in \figref{fig1}.
+\section{Solution overview}\label{Solution overview}
+\subsection{The ICC plot}\label{The ICC plot}
+The proposed solution is a tree-based representation offered as an alternative to Scatter Plots to address their limitations during the EDA phase. The tree structure mimics the process a researcher goes through when analyzing a scatter plot, visually dividing the plane into subplanes and examining the density and distribution of samples in each subplane, as illustrated in \figref{fig1}.
 
 \begin{figure}[H]
 \centering
@@ -69,9 +68,8 @@ The tree structure mimics the process a researcher goes through when analyzing a
 
 \end{figure}
 
-The selection of a tree structure representation was inspired by the widespread use of tree-representation in daily decision making. Also, unlike the scatter plots that only feature points, a tree enables to display additional information at its vertices and arcs. Last, the branching structure of the tree enables to facilitate the analysis of multiple dimensions of the data. \\
-Visual features such as colors and gradients aid in emphasizing the data's distribution, while confusion matrices at the tree nodes depict the precise data's density. \\
-I named the representation ICC plot, as an acronym of its 3 components: \textbf{I}nduction tree, \textbf{C}onfusion matrices and \textbf{C}olors.
+The choice of a tree structure representation was influenced by its common usage in decision making and its ability to display additional information at vertices and arcs, unlike scatter plots that feature only points. The branching structure of the tree also facilitates the analysis of multiple dimensions of the data. \\
+Visual features such as colors and gradients aid in emphasizing the data's distribution, while confusion matrices at the tree nodes depict the precise data's density. I named the representation ICC plot, as an acronym of its 3 components: \textbf{I}nduction tree, \textbf{C}onfusion matrices and \textbf{C}olors.
 
 \begin{figure}[H]
 \centering
@@ -82,7 +80,7 @@ I named the representation ICC plot, as an acronym of its 3 components: \textbf{
 
 \end{figure}
 
-The ICC offers additional functionality to the researcher, such as adjusting the tree depth to increase or decrease the number of simulated splits of the plain, hiding the confusion matrices (to focus on the data spread instead of specific quantities), and adjusting colors, as illustrated in  \figref{fig3}.
+The ICC plot provides researchers with additional functionality, such as the ability to adjust tree depth to increase or decrease the number of simulated splits, hide the confusion matrices to focus on data spread, and modify colors. These options are illustrated in \figref{fig3}.
 
 \begin{figure}[H]
         	\centering
